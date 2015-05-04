@@ -1,6 +1,6 @@
 ﻿namespace fahrplan
 {
-    partial class Form3
+    partial class LogInForm
     {
         /// <summary>
         /// Required designer variable.
@@ -88,7 +88,7 @@
             this.label4.Text = "(Registrierung)";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // Form3
+            // LogInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -101,9 +101,9 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form3";
+            this.Name = "LogInForm";
             this.Text = "Log in";
-            this.Load += new System.EventHandler(this.Form3_Load);
+            this.Load += new System.EventHandler(this.LogInForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

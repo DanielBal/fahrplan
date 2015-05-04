@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace fahrplan
 {
-    public partial class Form2 : Form
+    public partial class SignUpForm : Form
     {
-        public Form2()
+        public SignUpForm()
         {
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void SignUpForm_Load(object sender, EventArgs e)
         {
 
         }
@@ -29,8 +29,21 @@ namespace fahrplan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            new MainForm().Show();
-            Close();
+            string name, pass1, pass2;
+            name = textBox1.Text;
+            pass1 = textBox2.Text;
+            pass2 = textBox3.Text;
+
+            if (name == "" || pass1 == "" || pass2 == "") {
+                MessageBox.Show("Bitte alle Felder ausfüllen!");
+            } else {
+                if (pass1 != pass2) {
+                    MessageBox.Show("Passwörter sind unterschiedlich!");
+                } else {
+                    MessageBox.Show("Aww yea. Account done!");
+                    Close();
+                }
+            }
         }
     }
 }

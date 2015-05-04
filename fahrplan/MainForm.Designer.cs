@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +43,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_search = new System.Windows.Forms.Button();
+            this.lst_overview = new System.Windows.Forms.ListView();
+            this.Zugnumer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Von = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Nach = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Am = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Abfahrtszeit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Verspätung = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -177,11 +185,60 @@
             this.btn_search.UseVisualStyleBackColor = true;
             this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
+            // lst_overview
+            // 
+            this.lst_overview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Zugnumer,
+            this.Von,
+            this.Nach,
+            this.Am,
+            this.Abfahrtszeit,
+            this.Verspätung});
+            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Name = "listViewGroup1";
+            this.lst_overview.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup1});
+            this.lst_overview.Location = new System.Drawing.Point(250, 39);
+            this.lst_overview.MultiSelect = false;
+            this.lst_overview.Name = "lst_overview";
+            this.lst_overview.Size = new System.Drawing.Size(566, 316);
+            this.lst_overview.TabIndex = 6;
+            this.lst_overview.UseCompatibleStateImageBehavior = false;
+            this.lst_overview.View = System.Windows.Forms.View.Details;
+            // 
+            // Zugnumer
+            // 
+            this.Zugnumer.Text = "Zugnummer";
+            // 
+            // Von
+            // 
+            this.Von.Text = "Von";
+            this.Von.Width = 100;
+            // 
+            // Nach
+            // 
+            this.Nach.Text = "Nach";
+            this.Nach.Width = 100;
+            // 
+            // Am
+            // 
+            this.Am.Text = "Am";
+            this.Am.Width = 70;
+            // 
+            // Abfahrtszeit
+            // 
+            this.Abfahrtszeit.Text = "Abfahrtszeit";
+            // 
+            // Verspätung
+            // 
+            this.Verspätung.Text = "Verspätung";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 367);
+            this.Controls.Add(this.lst_overview);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -216,6 +273,13 @@
         private System.Windows.Forms.TextBox txt_time;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btn_search;
+        private System.Windows.Forms.ListView lst_overview;
+        private System.Windows.Forms.ColumnHeader Zugnumer;
+        private System.Windows.Forms.ColumnHeader Von;
+        private System.Windows.Forms.ColumnHeader Nach;
+        private System.Windows.Forms.ColumnHeader Am;
+        private System.Windows.Forms.ColumnHeader Abfahrtszeit;
+        private System.Windows.Forms.ColumnHeader Verspätung;
     }
 }
 

@@ -14,9 +14,9 @@ C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\obj\Debug
 C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\obj\Debug\fahrplan.pdb
 C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\obj\Debug\fahrplan.csprojResolveAssemblyReference.cache
 C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\obj\Debug\fahrplan.MainForm.resources
-C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\obj\Debug\fahrplan.Form2.resources
-C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\obj\Debug\fahrplan.Form3.resources
 C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\obj\Debug\fahrplan.Properties.Resources.resources
 C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\obj\Debug\fahrplan.csproj.GenerateResource.Cache
 C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\bin\Debug\fahrplan.exe
 C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\bin\Debug\fahrplan.pdb
+C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\obj\Debug\fahrplan.SignUpForm.resources
+C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\obj\Debug\fahrplan.LogInForm.resources
