@@ -51,6 +51,7 @@ namespace fahrplan
                         int result = int.Parse(dReader["count"].ToString());
                         if (result > 0) {
                             //eingeloggt
+                            this.DialogResult = DialogResult.OK;
                             this.Close();
                         } else {
                             MessageBox.Show("Benutzername oder Passwort ungültig!");

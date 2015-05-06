@@ -18,10 +18,15 @@ namespace fahrplan
                                             "User id=fahrplanuser;" +
                                             "Password=Pa$$w0rd;";
         private AutoCompleteStringCollection bhf_namesCollection = new AutoCompleteStringCollection();
+        private bool isAdmin = false;
 
         public MainForm()
         {
             InitializeComponent();
+
+            //insert default values for some components
+            txt_hours.Text = DateTime.Now.Hour.ToString();
+            txt_minutes.Text = DateTime.Now.Minute.ToString();
 
             try {
                 //befüllen der ListView mit Fahrplaneinträgen
@@ -79,20 +84,56 @@ namespace fahrplan
 
         private void logInToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new LogInForm().Show();
+            lbl_info.Text = "";
+            if (!this.isAdmin) {
+                //show log in dialog:
+                using (LogInForm loginForm = new LogInForm()) {
+                    if (loginForm.ShowDialog() == DialogResult.OK) {
+                        //logged in
+                        //now show a log off button instead of a log in
+                        logInToolStripMenuItem.Text = "Log off";
+                        this.isAdmin = true;
+                        verwaltenToolStripMenuItem.Visible = true;
+                    }
+                }
+            } else {
+                this.isAdmin = false;
+                logInToolStripMenuItem.Text = "Log in";
+                verwaltenToolStripMenuItem.Visible = false;
+            }
         }
 
         private void btn_search_Click(object sender, EventArgs e) {
-            //just for testing || to be separated into a function
+            lbl_info.Text = "";
 
             if (txt_from.Text == "" || txt_to.Text == "") {
-                MessageBox.Show("Bitte alle Felder ausfüllen!");
+                lbl_info.Text = "Bitte alle Felder ausfüllen!";
             } else {
                 try {
                     lst_overview.Items.Clear();
+                    //build the where clause
+                    StringBuilder whereClauseBuilder = new StringBuilder("where bhf1.bhf_name = '");
+                    whereClauseBuilder.Append(txt_from.Text);
+                    whereClauseBuilder.Append("' and bhf2.bhf_name = '");
+                    whereClauseBuilder.Append(txt_to.Text);
+                    whereClauseBuilder.Append("' and Ankunft_Datum = '");
+                    whereClauseBuilder.Append(dateTimePicker1.Text);
+                    whereClauseBuilder.Append("'");
+                    if (txt_hours.Text.Length > 0 && txt_minutes.Text.Length > 0
+                        && isNumberBetween(int.Parse(txt_hours.Text), 0, 24)
+                        && isNumberBetween(int.Parse(txt_minutes.Text), 0, 59)) {
+                        whereClauseBuilder.Append(" and Abfahrt_Zeit = '");
+                        whereClauseBuilder.Append(txt_hours.Text);
+                        whereClauseBuilder.Append(":");
+                        whereClauseBuilder.Append(txt_minutes.Text);
+                        whereClauseBuilder.Append("'");
+                    } else {
+                        lbl_info.Text = "Bitte geben Sie eine gültige Abfahrtszeit an!";
+                    }
                     SqlConnection con = new SqlConnection();
                     con.ConnectionString = this.connectionString;
-                    fillListView(con, "where bhf1.bhf_name = '"+txt_from.Text+"' and bhf2.bhf_name = '"+txt_to.Text+"'");
+                    //query the database
+                    fillListView(con, whereClauseBuilder.ToString());
 
                     con.Close();
                 } catch (Exception ex) {
@@ -128,7 +169,7 @@ namespace fahrplan
                 fahrplanTableDA.Fill(fahrplanDataTable);
 
                 if (fahrplanDataTable.Rows.Count < 1) {
-                    lst_overview.Items.Add("leider keine passende Verbindung gefunden..");
+                    lbl_info.Text = "leider keine passende Verbindung gefunden..";
                 }
                 for (int i = 0; i < fahrplanDataTable.Rows.Count; i++) {
                     DataRow dr = fahrplanDataTable.Rows[i];
@@ -158,7 +199,7 @@ namespace fahrplan
                 DataTable fahrplanDataTable = new DataTable();
                 fahrplanTableDA.Fill(fahrplanDataTable);
                 if (fahrplanDataTable.Rows.Count < 1) {
-                    lst_overview.Items.Add("leider keine passende Verbindung gefunden..");
+                    lbl_info.Text = "leider keine passende Verbindung gefunden..";
                 }
                 for (int i = 0; i < fahrplanDataTable.Rows.Count; i++) {
                     DataRow dr = fahrplanDataTable.Rows[i];
@@ -175,6 +216,23 @@ namespace fahrplan
             }
         }
         #endregion
+
+        private void txt_hours_keyPressed(object sender, KeyPressEventArgs e) {
+            if (!char.IsDigit(e.KeyChar)) {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_minutes_keyPressed(object sender, KeyPressEventArgs e) {
+            if (!char.IsDigit(e.KeyChar)) {
+                e.Handled = true;
+            }
+        }
+
+        private bool isNumberBetween(int num, int min, int max) {
+            //inklusive Grenzen
+            return num >= min && num <= max ? true : false;
+        }
     }
 
 }
