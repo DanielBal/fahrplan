@@ -54,13 +54,12 @@ namespace fahrplan
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Aww yea. Account done!");
+                        Close();
                     }
                     catch (SqlException)
                     {
                         MessageBox.Show("Benutzername ist schon verwendet!");
-                    }
-
-                    Close();
+                    }                  
                 }
             }
         }
