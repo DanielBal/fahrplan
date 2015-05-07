@@ -70,9 +70,12 @@ namespace fahrplan
             this.Visible = false;
             using (SignUpForm signUpForm = new SignUpForm(false)) {
                 if (signUpForm.ShowDialog() == DialogResult.OK) {
-
+                    this.user_ID = signUpForm.user_ID;
+                    this.isAdmin = false;
+                    this.DialogResult = DialogResult.OK;
                 }
             }
+            this.Close();
         }
     }
 }

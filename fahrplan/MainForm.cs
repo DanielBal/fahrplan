@@ -15,6 +15,7 @@ namespace fahrplan
     {
         private AutoCompleteStringCollection bhf_namesCollection = new AutoCompleteStringCollection();
         bool isAdmin = false;
+        bool isLoggedIn = false;
         String user_ID;
 
         public MainForm()
@@ -86,7 +87,7 @@ namespace fahrplan
         private void logInToolStripMenuItem_Click(object sender, EventArgs e)
         {
             lbl_info.Text = "";
-            if (!this.isAdmin) {
+            if (!this.isLoggedIn) {
                 //show log in dialog:
                 using (LogInForm loginForm = new LogInForm()) {
                     if (loginForm.ShowDialog() == DialogResult.OK) {
@@ -95,13 +96,14 @@ namespace fahrplan
                         logInToolStripMenuItem.Text = "Log off";
                         this.isAdmin = loginForm.isAdmin;
                         this.user_ID = loginForm.user_ID;
+                        this.isLoggedIn = true;
                         if (this.isAdmin) {
                             verwaltenToolStripMenuItem.Visible = true;
                         }
                     }
                 }
             } else {
-                this.isAdmin = false;
+                this.isLoggedIn = false;
                 logInToolStripMenuItem.Text = "Log in";
                 verwaltenToolStripMenuItem.Visible = false;
             }

@@ -15,6 +15,7 @@ namespace fahrplan
     public partial class SignUpForm : Form
     {
         private String adminSignUp;
+        public String user_ID;
 
         public SignUpForm(bool isAdminSignUp)
         {
@@ -57,6 +58,7 @@ namespace fahrplan
                         conn.Open();
                         cmd.ExecuteNonQuery();
                         this.DialogResult = DialogResult.OK;
+                        this.user_ID = name;
                         Close();
                     }
                     catch (SqlException)
