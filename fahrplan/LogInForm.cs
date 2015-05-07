@@ -68,7 +68,7 @@ namespace fahrplan
 
         private void label3_Click(object sender, EventArgs e) {
             this.Visible = false;
-            using (SignUpForm signUpForm = new SignUpForm()) {
+            using (SignUpForm signUpForm = new SignUpForm(false)) {
                 if (signUpForm.ShowDialog() == DialogResult.OK) {
 
                 }

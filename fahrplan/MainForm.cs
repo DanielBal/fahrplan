@@ -240,7 +240,7 @@ namespace fahrplan
 
         private void benutzerHinzufuegenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SignUpForm signupform = new SignUpForm();
+            SignUpForm signupform = new SignUpForm(true);
             signupform.Show();
         }
 

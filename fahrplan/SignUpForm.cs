@@ -14,9 +14,12 @@ namespace fahrplan
 {
     public partial class SignUpForm : Form
     {
-        public SignUpForm()
+        private String adminSignUp;
+
+        public SignUpForm(bool isAdminSignUp)
         {
             InitializeComponent();
+            this.adminSignUp = isAdminSignUp ? "true" : "false";
         }
 
         private void SignUpForm_Load(object sender, EventArgs e)
@@ -50,10 +53,10 @@ namespace fahrplan
                     cmd.CommandType = CommandType.Text;
                     try
                     {
-                        cmd.CommandText = "insert into dbo.Benutzer values ('" + name + "','" + pass1 + "','true')";
+                        cmd.CommandText = "insert into dbo.Benutzer values ('" + name + "','" + pass1 + "','"+this.adminSignUp+"')";
                         conn.Open();
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Aww yea. Account done!");
+                        this.DialogResult = DialogResult.OK;
                         Close();
                     }
                     catch (SqlException)

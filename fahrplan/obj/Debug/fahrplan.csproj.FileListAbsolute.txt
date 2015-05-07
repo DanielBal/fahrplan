@@ -1,1 +1,2 @@
 C:\Users\Máté\Documents\GitHub\Fahrplan\fahrplan\fahrplan\bin\Debug\fahrplan.exe.config
+C:\Users\Dani\Downloads\fahrplan-2015-04-16\fahrplan\fahrplan\fahrplan\bin\Debug\fahrplan.exe.config
