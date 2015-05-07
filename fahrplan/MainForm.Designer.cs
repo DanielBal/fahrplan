@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.logInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -263,10 +263,10 @@
             this.Am,
             this.Abfahrtszeit,
             this.Verspätung});
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup2.Header = "ListViewGroup";
+            listViewGroup2.Name = "listViewGroup1";
             this.lst_overview.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1});
+            listViewGroup2});
             this.lst_overview.Location = new System.Drawing.Point(250, 39);
             this.lst_overview.MultiSelect = false;
             this.lst_overview.Name = "lst_overview";
@@ -274,6 +274,7 @@
             this.lst_overview.TabIndex = 6;
             this.lst_overview.UseCompatibleStateImageBehavior = false;
             this.lst_overview.View = System.Windows.Forms.View.Details;
+            this.lst_overview.SelectedIndexChanged += new System.EventHandler(this.lst_overview_SelectedIndexChanged);
             // 
             // Zugnumer
             // 
@@ -326,6 +327,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Fahrplan";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);

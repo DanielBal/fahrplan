@@ -32,6 +32,8 @@ namespace fahrplan
                 con.ConnectionString = fahrplan.Properties.Settings.Default.dbConnection;
 
                 fillListView(con);
+                lst_overview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                lst_overview.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 con.Close();
 
                 //befülle bhf_collection für die Auto-Vervollständigung
@@ -236,6 +238,16 @@ namespace fahrplan
         {
             SignUpForm signupform = new SignUpForm();
             signupform.Show();
+        }
+
+        private void lst_overview_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 
