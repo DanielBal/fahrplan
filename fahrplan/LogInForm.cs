@@ -14,7 +14,7 @@ namespace fahrplan
     public partial class LogInForm : Form
     {
 
-        private String connectionString = "Data Source=10.0.0.13;" +
+        private String connectionString = "Data Source=10.130.20.102;" +
                                             "Initial Catalog=fahrplanauskunft;" +
                                             "User id=fahrplanuser;" +
                                             "Password=Pa$$w0rd;";

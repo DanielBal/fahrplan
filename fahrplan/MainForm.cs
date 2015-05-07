@@ -13,7 +13,7 @@ namespace fahrplan
 {
     public partial class MainForm : Form
     {
-        private String connectionString = "Data Source=10.0.0.13;" +
+        private String connectionString = "Data Source=10.130.20.102;" +
                                             "Initial Catalog=fahrplanauskunft;" +
                                             "User id=fahrplanuser;" +
                                             "Password=Pa$$w0rd;";
@@ -27,6 +27,8 @@ namespace fahrplan
             //insert default values for some components
             txt_hours.Text = DateTime.Now.Hour.ToString();
             txt_minutes.Text = DateTime.Now.Minute.ToString();
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dd-MM-yyyy";
 
             try {
                 //befüllen der ListView mit Fahrplaneinträgen
@@ -116,17 +118,17 @@ namespace fahrplan
                     whereClauseBuilder.Append(txt_from.Text);
                     whereClauseBuilder.Append("' and bhf2.bhf_name = '");
                     whereClauseBuilder.Append(txt_to.Text);
-                    whereClauseBuilder.Append("' and Ankunft_Datum = '");
+                    whereClauseBuilder.Append("' and Ankunft_Datum >= '");
                     whereClauseBuilder.Append(dateTimePicker1.Text);
                     whereClauseBuilder.Append("'");
                     if (txt_hours.Text.Length > 0 && txt_minutes.Text.Length > 0
                         && isNumberBetween(int.Parse(txt_hours.Text), 0, 24)
                         && isNumberBetween(int.Parse(txt_minutes.Text), 0, 59)) {
-                        whereClauseBuilder.Append(" and Abfahrt_Zeit = '");
+                        whereClauseBuilder.Append(" and Abfahrt_Zeit >= '");
                         whereClauseBuilder.Append(txt_hours.Text);
                         whereClauseBuilder.Append(":");
                         whereClauseBuilder.Append(txt_minutes.Text);
-                        whereClauseBuilder.Append("'");
+                        whereClauseBuilder.Append("' order by Ankunft_Datum, Abfahrt_Zeit");
                     } else {
                         lbl_info.Text = "Bitte geben Sie eine gültige Abfahrtszeit an!";
                     }
