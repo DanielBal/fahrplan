@@ -14,7 +14,8 @@ namespace fahrplan
     public partial class MainForm : Form
     {
         private AutoCompleteStringCollection bhf_namesCollection = new AutoCompleteStringCollection();
-        private bool isAdmin = false;
+        bool isAdmin = false;
+        String user_ID;
 
         public MainForm()
         {
@@ -92,8 +93,11 @@ namespace fahrplan
                         //logged in
                         //now show a log off button instead of a log in
                         logInToolStripMenuItem.Text = "Log off";
-                        this.isAdmin = true;
-                        verwaltenToolStripMenuItem.Visible = true;
+                        this.isAdmin = loginForm.isAdmin;
+                        this.user_ID = loginForm.user_ID;
+                        if (this.isAdmin) {
+                            verwaltenToolStripMenuItem.Visible = true;
+                        }
                     }
                 }
             } else {

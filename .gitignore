@@ -1,7 +1,7 @@
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
-
+fahrplan/bin/*.*
 # Folder config file
 Desktop.ini
 
@@ -42,3 +42,13 @@ fahrplan/bin/*.*
 Network Trash Folder
 Temporary Items
 .apdisk
+*.exe
+fahrplan/bin/
+*.pdb
+fahrplan/obj/Debug/fahrplan.csproj.GenerateResource.Cache
+*.Cache
+*.exe
+fahrplan/bin/Debug/fahrplan.pdb
+*.pdb
+fahrplan/obj/Debug/fahrplan.csproj.GenerateResource.Cache
+*.Cache

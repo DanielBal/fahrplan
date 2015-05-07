@@ -13,6 +13,9 @@ namespace fahrplan
 {
     public partial class LogInForm : Form
     {
+        public bool isAdmin = false;
+        public String user_ID = null;
+
         public LogInForm()
         {
             InitializeComponent();
@@ -34,36 +37,42 @@ namespace fahrplan
             } else {
                 try {
                     SqlDataReader dReader;
+                    bool bExists = false;
                     SqlConnection conn = new SqlConnection();
                     conn.ConnectionString = fahrplan.Properties.Settings.Default.dbConnection;
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "Select Count(*) as count from Benutzer where IsAdmin = 1 and Benutzer_ID = '" + name + "'  and Passwort = '" + pass + "'";
+                    cmd.CommandText = "Select IsAdmin as admin from Benutzer where Benutzer_ID = '" + name + "' and Passwort = '" + pass + "'";
                     conn.Open();
                     dReader = cmd.ExecuteReader();
+                     
                     while (dReader.Read()) {
-                        int result = int.Parse(dReader["count"].ToString());
-                        if (result > 0) {
-                            //eingeloggt
-                            this.DialogResult = DialogResult.OK;
-                            this.Close();
-                        } else {
-                            MessageBox.Show("Benutzername oder Passwort ungültig!");
-                        }
+                        if (dReader["admin"].ToString().ToLower().Equals("true")) {
+                            //setze User auf admin
+                            this.isAdmin = true;
+                        } 
+                        //eingeloggt
+                        this.user_ID = name;
+                        this.DialogResult = DialogResult.OK;
+                        bExists = true;
+                        this.Close();
                     }
+                    if (!bExists)
+                        MessageBox.Show("Benutzername oder Passwort ungültig!");
                 } catch (Exception ex) {
                     MessageBox.Show("Verbindungsfehler: \n\n" + ex.Message, "Database Access Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
-                
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
-            new SignUpForm().Show();
-            Close();
+        private void label3_Click(object sender, EventArgs e) {
+            this.Visible = false;
+            using (SignUpForm signUpForm = new SignUpForm()) {
+                if (signUpForm.ShowDialog() == DialogResult.OK) {
+
+                }
+            }
         }
     }
 }
