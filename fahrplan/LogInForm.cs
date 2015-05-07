@@ -13,11 +13,6 @@ namespace fahrplan
 {
     public partial class LogInForm : Form
     {
-
-        private String connectionString = "Data Source=10.130.20.102;" +
-                                            "Initial Catalog=fahrplanauskunft;" +
-                                            "User id=fahrplanuser;" +
-                                            "Password=Pa$$w0rd;";
         public LogInForm()
         {
             InitializeComponent();
@@ -40,7 +35,7 @@ namespace fahrplan
                 try {
                     SqlDataReader dReader;
                     SqlConnection conn = new SqlConnection();
-                    conn.ConnectionString = connectionString;
+                    conn.ConnectionString = fahrplan.Properties.Settings.Default.dbConnection;
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
                     cmd.CommandType = CommandType.Text;

@@ -13,10 +13,6 @@ namespace fahrplan
 {
     public partial class MainForm : Form
     {
-        private String connectionString = "Data Source=10.130.20.102;" +
-                                            "Initial Catalog=fahrplanauskunft;" +
-                                            "User id=fahrplanuser;" +
-                                            "Password=Pa$$w0rd;";
         private AutoCompleteStringCollection bhf_namesCollection = new AutoCompleteStringCollection();
         private bool isAdmin = false;
 
@@ -33,7 +29,7 @@ namespace fahrplan
             try {
                 //befüllen der ListView mit Fahrplaneinträgen
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = this.connectionString;
+                con.ConnectionString = fahrplan.Properties.Settings.Default.dbConnection;
 
                 fillListView(con);
                 con.Close();
@@ -41,7 +37,7 @@ namespace fahrplan
                 //befülle bhf_collection für die Auto-Vervollständigung
                 SqlDataReader dReader;
                 SqlConnection conn = new SqlConnection();
-                conn.ConnectionString = connectionString;
+                conn.ConnectionString = fahrplan.Properties.Settings.Default.dbConnection;
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.Text;
@@ -133,7 +129,7 @@ namespace fahrplan
                         lbl_info.Text = "Bitte geben Sie eine gültige Abfahrtszeit an!";
                     }
                     SqlConnection con = new SqlConnection();
-                    con.ConnectionString = this.connectionString;
+                    con.ConnectionString = fahrplan.Properties.Settings.Default.dbConnection;
                     //query the database
                     fillListView(con, whereClauseBuilder.ToString());
 
