@@ -104,25 +104,26 @@
             // verspaetungsbekanntgabeToolStripMenuItem
             // 
             this.verspaetungsbekanntgabeToolStripMenuItem.Name = "verspaetungsbekanntgabeToolStripMenuItem";
-            this.verspaetungsbekanntgabeToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.verspaetungsbekanntgabeToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.verspaetungsbekanntgabeToolStripMenuItem.Text = "Verspätungsbekanntgabe";
             // 
             // fahrtHinzufuegenToolStripMenuItem
             // 
             this.fahrtHinzufuegenToolStripMenuItem.Name = "fahrtHinzufuegenToolStripMenuItem";
-            this.fahrtHinzufuegenToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
+            this.fahrtHinzufuegenToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.fahrtHinzufuegenToolStripMenuItem.Text = "Fahrt hinzufügen";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(205, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(207, 6);
             // 
             // benutzerHinzufuegenToolStripMenuItem
             // 
             this.benutzerHinzufuegenToolStripMenuItem.Name = "benutzerHinzufuegenToolStripMenuItem";
-            this.benutzerHinzufuegenToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-            this.benutzerHinzufuegenToolStripMenuItem.Text = "Benutzer hinzufügen";
+            this.benutzerHinzufuegenToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.benutzerHinzufuegenToolStripMenuItem.Text = "Administrator hinzufügen";
+            this.benutzerHinzufuegenToolStripMenuItem.Click += new System.EventHandler(this.benutzerHinzufuegenToolStripMenuItem_Click);
             // 
             // groupBox1
             // 

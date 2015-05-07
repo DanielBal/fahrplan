@@ -231,6 +231,12 @@ namespace fahrplan
             //inklusive Grenzen
             return num >= min && num <= max ? true : false;
         }
+
+        private void benutzerHinzufuegenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SignUpForm signupform = new SignUpForm();
+            signupform.Show();
+        }
     }
 
 }

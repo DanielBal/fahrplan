@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
 
 namespace fahrplan
 {
@@ -40,7 +42,24 @@ namespace fahrplan
                 if (pass1 != pass2) {
                     MessageBox.Show("Passwörter sind unterschiedlich!");
                 } else {
-                    MessageBox.Show("Aww yea. Account done!");
+
+                    SqlConnection conn = new SqlConnection();
+                    conn.ConnectionString = fahrplan.Properties.Settings.Default.dbConnection;
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandType = CommandType.Text;
+                    try
+                    {
+                        cmd.CommandText = "insert into dbo.Benutzer values ('" + name + "','" + pass1 + "','true')";
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Aww yea. Account done!");
+                    }
+                    catch (SqlException)
+                    {
+                        MessageBox.Show("Benutzername ist schon verwendet!");
+                    }
+
                     Close();
                 }
             }
